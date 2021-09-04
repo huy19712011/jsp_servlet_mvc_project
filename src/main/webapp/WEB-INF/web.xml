@@ -8,6 +8,10 @@
         <servlet-name>JdbcTestServletWithoutXML</servlet-name>
         <servlet-class>jdbc.JdbcTestServletWithoutXML</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StudentControllerServlet</servlet-name>
+        <servlet-class>controllers.StudentControllerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>JdbcTestServlet</servlet-name>
         <url-pattern>/JdbcTestServlet</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>JdbcTestServletWithoutXML</servlet-name>
         <url-pattern>/JdbcTestServletWithoutXML</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentControllerServlet</servlet-name>
+        <url-pattern>/StudentControllerServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
