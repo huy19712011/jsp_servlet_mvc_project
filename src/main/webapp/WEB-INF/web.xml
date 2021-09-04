@@ -4,9 +4,17 @@
         <servlet-name>JdbcTestServlet</servlet-name>
         <servlet-class>jdbc.JdbcTestServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>JdbcTestServletWithoutXML</servlet-name>
+        <servlet-class>jdbc.JdbcTestServletWithoutXML</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>JdbcTestServlet</servlet-name>
         <url-pattern>/JdbcTestServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>JdbcTestServletWithoutXML</servlet-name>
+        <url-pattern>/JdbcTestServletWithoutXML</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
