@@ -119,4 +119,52 @@ public class StudentDbUtil {
 
     }
 
+    public Student getStudent(String theStudentId) throws Exception {
+
+        Student theStudent = null;
+
+        Connection myConn = null;
+        PreparedStatement myStmt = null;
+        ResultSet myRs = null;
+
+        int studentId;
+
+        try {
+
+            // convert student id to int
+            studentId = Integer.parseInt(theStudentId);
+
+            // get connection
+            myConn = dataSource.getConnection();
+
+            // create sql
+            String sql = "select * from student where id=?";
+
+            // create prepared statement
+            myStmt = myConn.prepareStatement(sql);
+
+            // set params
+            myStmt.setInt(1, studentId);
+
+            //execute query
+            myRs = myStmt.executeQuery();
+
+            // retrieve data
+            if (myRs.next()) {
+                String firstName = myRs.getString("first_name");
+                String lastName = myRs.getString("last_name");
+                String email = myRs.getString("email");
+
+                theStudent = new Student(studentId, firstName, lastName, email);
+            } else {
+                throw new Exception("Could not find student id: " + studentId);
+            }
+
+            return theStudent;
+
+        } finally {
+            close(myConn, myStmt, myRs);
+        }
+    }
+
 }
