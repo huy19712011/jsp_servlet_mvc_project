@@ -1,6 +1,6 @@
 <%-- 
     Document   : add-student-form
-    Created on : Sep 5, 2021, 9:29:38 AM
+    Created on : Apr 28, 2021, 8:26:24 PM
     Author     : huynq
 --%>
 
@@ -9,9 +9,49 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Add Student</title>
+        <link type="text/css" rel="stylesheet" href="../css/style.css"/>
+        <link type="text/css" rel="stylesheet" href="../css/add-student-style.css" />
     </head>
     <body>
-        <h1>add-student-form.jsp</h1>
+        <div id="wrapper">
+            <div id="header">
+                <h2>BK Academy</h2>
+            </div>
+        </div>
+        
+        <div id="container">
+            <h3>Add Student</h3>
+            
+            <form action="StudentControlServlet" method="GET">
+                <input type="hidden" name="command" value="ADD" />
+                
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><label>First name:</label></td>
+                            <td><input type="text" name="firstName"/></td>
+                        </tr>
+                        <tr>
+                            <td><label>Last name:</label></td>
+                            <td><input type="text" name="lastName"/></td>
+                        </tr>
+                        <tr>
+                            <td><label>Email:</label></td>
+                            <td><input type="text" name="email"/></td>
+                        </tr>
+                        <tr>
+                            <td><label></label></td>
+                            <td><input type="submit" value="Save" class="save"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </form>
+            
+            <div style="clear: both;"></div>
+            <p><a href="../StudentControllerServlet">Back to List</a></p>
+            
+        </div>
     </body>
 </html>
