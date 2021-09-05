@@ -62,7 +62,9 @@ public class StudentControllerServlet extends HttpServlet {
             String theCommand = request.getParameter("command");
 
             // if the command is missing, then default it to listing students
-            if (theCommand == null) theCommand = "LIST";
+            if (theCommand == null) {
+                theCommand = "LIST";
+            }
 
             // route to the appropriate method
             switch (theCommand) {
@@ -76,6 +78,10 @@ public class StudentControllerServlet extends HttpServlet {
 
                 case "LOAD":
                     loadStudent(request, response);
+                    break;
+
+                case "UPDATE":
+                    updateStudent(request, response);
                     break;
 
                 default:
@@ -159,8 +165,6 @@ public class StudentControllerServlet extends HttpServlet {
         // send back to main page (student list jsp)
         listStudents(request, response);
 
-
-
     }
 
     private void loadStudent(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -178,6 +182,25 @@ public class StudentControllerServlet extends HttpServlet {
         RequestDispatcher requestDispatcher
                 = request.getRequestDispatcher("views/update-student-form.jsp");
         requestDispatcher.forward(request, response);
+    }
+
+    private void updateStudent(HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        // read student info from form
+        int id = Integer.parseInt(request.getParameter("studentId"));
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
+        String email = request.getParameter("email");
+
+        // create a new student object
+        Student theStudent = new Student(id, firstName, lastName, email);
+
+        // update on database
+        studentDbUtil.updateStudent(theStudent);
+        
+        // send back to the list students
+        listStudents(request, response);
     }
 
 }

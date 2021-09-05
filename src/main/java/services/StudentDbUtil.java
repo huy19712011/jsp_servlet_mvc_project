@@ -167,4 +167,8 @@ public class StudentDbUtil {
         }
     }
 
+    public void updateStudent(Student theStudent) {
+        
+    }
+
 }
