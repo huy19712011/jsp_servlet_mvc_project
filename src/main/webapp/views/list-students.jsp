@@ -16,7 +16,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Student list</title>
+        <link type="text/css" rel="stylesheet" href="css/style.css"/>
     </head>
+    
     <%
         // get students from request obj
         List<Student> theStudents
